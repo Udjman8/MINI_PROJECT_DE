@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "SAMPLEUDDF"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureBlobStorage_q1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"Snowflake_linkedservice_password": {
+			"value": ""
+		},
+		"linkedservice_for_local_sqlserver_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "servertest08.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "DB_1"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "uday"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": " https://jsonplaceholder.typicode.com/users"
+		},
+		"Snowflake_linkedservice_properties_typeProperties_database": {
+			"value": "MINI_PROJECT"
+		},
+		"Snowflake_linkedservice_properties_typeProperties_role": {
+			"value": "Accountadmin"
+		},
+		"Snowflake_linkedservice_properties_typeProperties_host": {
+			"value": "PVUSQTI-AJB57755.snowflakecomputing.com"
+		},
+		"linkedservice_for_local_sqlserver_properties_typeProperties_server": {
+			"value": "JM-DKT-052"
+		},
+		"linkedservice_for_local_sqlserver_properties_typeProperties_database": {
+			"value": "Mini_Project"
+		},
+		"linkedservice_for_local_sqlserver_properties_typeProperties_userName": {
+			"value": "sa"
+		},
+		"linkedservice_for_staging_sasUri": {
+			"value": ""
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

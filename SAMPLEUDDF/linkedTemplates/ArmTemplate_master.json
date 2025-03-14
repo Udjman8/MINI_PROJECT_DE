@@ -1,0 +1,174 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "SAMPLEUDDF"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureBlobStorage_q1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage_q1'"
+		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"Snowflake_linkedservice_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Snowflake_linkedservice'"
+		},
+		"linkedservice_for_local_sqlserver_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'linkedservice_for_local_sqlserver'"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "servertest08.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "DB_1"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "uday"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": " https://jsonplaceholder.typicode.com/users"
+		},
+		"Snowflake_linkedservice_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "MINI_PROJECT"
+		},
+		"Snowflake_linkedservice_properties_typeProperties_role": {
+			"type": "string",
+			"defaultValue": "Accountadmin"
+		},
+		"Snowflake_linkedservice_properties_typeProperties_host": {
+			"type": "string",
+			"defaultValue": "PVUSQTI-AJB57755.snowflakecomputing.com"
+		},
+		"linkedservice_for_local_sqlserver_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "JM-DKT-052"
+		},
+		"linkedservice_for_local_sqlserver_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "Mini_Project"
+		},
+		"linkedservice_for_local_sqlserver_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "sa"
+		},
+		"linkedservice_for_staging_sasUri": {
+			"type": "secureString",
+			"metadata": "Secure string for 'sasUri' of 'linkedservice_for_staging'"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "SAMPLEUDDF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureBlobStorage_q1_connectionString": {
+						"value": "[parameters('AzureBlobStorage_q1_connectionString')]"
+					},
+					"AzureSqlDatabase1_password": {
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					},
+					"Snowflake_linkedservice_password": {
+						"value": "[parameters('Snowflake_linkedservice_password')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"RestService1_properties_typeProperties_url": {
+						"value": "[parameters('RestService1_properties_typeProperties_url')]"
+					},
+					"Snowflake_linkedservice_properties_typeProperties_database": {
+						"value": "[parameters('Snowflake_linkedservice_properties_typeProperties_database')]"
+					},
+					"Snowflake_linkedservice_properties_typeProperties_role": {
+						"value": "[parameters('Snowflake_linkedservice_properties_typeProperties_role')]"
+					},
+					"Snowflake_linkedservice_properties_typeProperties_host": {
+						"value": "[parameters('Snowflake_linkedservice_properties_typeProperties_host')]"
+					},
+					"linkedservice_for_staging_sasUri": {
+						"value": "[parameters('linkedservice_for_staging_sasUri')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "SAMPLEUDDF_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"linkedservice_for_local_sqlserver_password": {
+						"value": "[parameters('linkedservice_for_local_sqlserver_password')]"
+					},
+					"linkedservice_for_local_sqlserver_properties_typeProperties_server": {
+						"value": "[parameters('linkedservice_for_local_sqlserver_properties_typeProperties_server')]"
+					},
+					"linkedservice_for_local_sqlserver_properties_typeProperties_database": {
+						"value": "[parameters('linkedservice_for_local_sqlserver_properties_typeProperties_database')]"
+					},
+					"linkedservice_for_local_sqlserver_properties_typeProperties_userName": {
+						"value": "[parameters('linkedservice_for_local_sqlserver_properties_typeProperties_userName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'SAMPLEUDDF_ArmTemplate_0')]"
+			]
+		}
+	]
+}
