@@ -1,0 +1,7 @@
+{
+	"name": "localsqlconnectionruntime",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "to connect with my local sql server"
+	}
+}

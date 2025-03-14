@@ -1,0 +1,92 @@
+{
+	"name": "LocalSql_to_Snowflake",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEachFORIngestion",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@variables('input')",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "0.12:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "SqlServerSource",
+									"queryTimeout": "02:00:00",
+									"partitionOption": "None"
+								},
+								"sink": {
+									"type": "SnowflakeV2Sink",
+									"importSettings": {
+										"type": "SnowflakeImportCopyCommand"
+									}
+								},
+								"enableStaging": true,
+								"stagingSettings": {
+									"linkedServiceName": {
+										"referenceName": "linkedservice_for_staging",
+										"type": "LinkedServiceReference"
+									},
+									"path": "jobportal-raw"
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "localsqlserver",
+									"type": "DatasetReference",
+									"parameters": {
+										"table_name": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "snowflake_dataset",
+									"type": "DatasetReference",
+									"parameters": {
+										"table": {
+											"value": "@item()",
+											"type": "Expression"
+										}
+									}
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"variables": {
+			"input": {
+				"type": "Array",
+				"defaultValue": [
+					"PRODUCTS",
+					"TRANSACTION",
+					"CUSTOMERS"
+				]
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2025-03-14T13:43:59Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

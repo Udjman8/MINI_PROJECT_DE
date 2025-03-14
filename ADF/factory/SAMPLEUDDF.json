@@ -1,0 +1,9 @@
+{
+	"name": "SAMPLEUDDF",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9614e595-4ea1-41d8-9fea-3549f8d44792",
+		"tenantId": "2800c0a0-70e9-49be-8733-faeaa6aced99"
+	}
+}

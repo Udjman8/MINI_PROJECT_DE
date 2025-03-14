@@ -1,0 +1,32 @@
+{
+	"name": "delinit0",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureBlobStorage_q1",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"inupt": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().inupt",
+					"type": "Expression"
+				},
+				"container": "input2"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
